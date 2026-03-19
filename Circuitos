@@ -1,0 +1,39 @@
+#include <LiquidCrystal.h>
+
+// Pines LCD
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+int sensorPin = A0;
+int ledPin = 7;
+
+float temperatura;
+
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int valor = analogRead(sensorPin);
+  
+  // Conversión a temperatura
+  temperatura = (valor * 5.0 * 100.0) / 1024.0;
+
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(temperatura);
+  lcd.print(" C");
+
+  if (temperatura > 30) {
+    digitalWrite(ledPin, HIGH);
+    lcd.setCursor(0, 1);
+    lcd.print("ALTA TEMPERATURA ");
+  } else {
+    digitalWrite(ledPin, LOW);
+    lcd.setCursor(0, 1);
+    lcd.print("TEMP NORMAL     ");
+  }
+
+  delay(1000);
+}
