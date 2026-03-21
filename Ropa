@@ -1,0 +1,13 @@
+class Ropa extends Producto {
+    private String talla;
+
+    public Ropa(int id, String nombre, double precio, String talla) {
+        super(id, nombre, precio);
+        this.talla = talla;
+    }
+
+    @Override
+    public double calcularPrecioFinal() {
+        return precio * 1.10; // impuesto
+    }
+}
