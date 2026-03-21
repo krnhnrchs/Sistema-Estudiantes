@@ -1,0 +1,13 @@
+class Electronico extends Producto {
+    private int garantiaMeses;
+
+    public Electronico(int id, String nombre, double precio, int garantiaMeses) {
+        super(id, nombre, precio);
+        this.garantiaMeses = garantiaMeses;
+    }
+
+    @Override
+    public double calcularPrecioFinal() {
+        return precio * 1.16; // IVA
+    }
+}
