@@ -1,0 +1,16 @@
+public class Inventario {
+    public static void main(String[] args) {
+
+        Producto p1 = new Electronico(1, "Laptop", 15000, 12);
+        Producto p2 = new Alimento(2, "Leche", 25, "2026-04-01");
+        Producto p3 = new Ropa(3, "Camisa", 300, "M");
+
+        Producto[] productos = {p1, p2, p3};
+
+        for (Producto p : productos) {
+            p.mostrarInfo();
+            System.out.println("Precio final: $" + p.calcularPrecioFinal());
+            System.out.println("---------------------------");
+        }
+    }
+}
